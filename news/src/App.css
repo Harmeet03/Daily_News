@@ -37,6 +37,12 @@ nav > .up > img{
   width: 200px;
 }
 
+@media only screen and (max-width: 680px){
+  nav > .up > img{
+    width: 150px;
+  }
+}
+
 nav > .down{
   display: flex;
   justify-content: center;
