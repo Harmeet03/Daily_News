@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+import React from "react";
+
+import Home from './Home.js'
+import Finance from './components/Finance.js'
+import Sports from './components/Sports.js'
+import Politics from './components/Politics.js'
+import Technology from './components/Technology.js'
+import NewsDetail from './components/NewsDetail.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/news/:id" element={<NewsDetail/>} />
+        <Route path="/finance" element={<Finance/>} />
+        <Route path="/sports" element={<Sports/>} />
+        <Route path="/politics" element={<Politics/>} />
+        <Route path="/technology" element={<Technology/>} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;

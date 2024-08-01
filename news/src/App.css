@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+/* LOADING LOADER CSS */
+.loader{
+  border: 4px red solid;
+  border-top: 4px yellow solid;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+  margin-top: 100px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
+@keyframes spin{
+  0%{
     transform: rotate(0deg);
   }
-  to {
+  100%{
     transform: rotate(360deg);
+  }
+}
+
+/* NAVBAR CSS */
+nav{
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 1px 1px 20px;
+}
+
+nav > .up{
+  text-align: center;
+  padding: 10px 0px 0px 0px;
+}
+
+nav > .up > img{
+  width: 200px;
+}
+
+nav > .down{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-weight: bold;
+}
+
+/* CONTENT CSS */
+header{
+  margin: auto;
+  margin-top: 200px;
+  width: 1000px;
+}
+
+@media only screen and (max-width: 1010px){
+  header{
+    width: 650px;
+    padding: 0px 0px;
+  }
+}
+
+@media only screen and (max-width: 680px){
+  header{
+    width: auto;
+    padding: 0px 20px;
+  }
+}
+
+.content{
+  margin: auto;
+  width: 1000px;
+  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+}
+
+.content > .box{
+  border: 1px solid;
+}
+
+.content > .box > .link{
+  text-decoration: none;
+  color: black;
+}
+
+.content > .box > .link > img{
+  justify-content: center;
+  width: 318px;
+  height: 250px;
+}
+
+.content > .box > .link > h3{
+  padding: 10px 16px;
+}
+
+.content > .box > .link > p{
+  padding: 0px 16px;
+}
+
+@media only screen and (max-width: 1010px){
+  .content{
+    width: 600px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 680px){
+  .content{
+    width: 320px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+/* DETAILED NEWS CONTENT CSS */
+.detail{
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 50px;
+  padding: 0px 20px;
+  width: 800px;
+}
+
+.detail > img{
+  width: 800px;
+  height: 400px;
+}
+
+.detail > h2{
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.detail > .desc{
+  margin-bottom: 20px;
+  padding: 20px 0px 20px 0px;
+  font-size: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.detail > div{
+  display: flex;
+  justify-content: space-around;
+}
+
+.from, .time, .source{
+  font-size: 12px;
+  color: rgb(155, 150, 150);
+}
+
+.detail > .source > b > a{
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 840px){
+  .detail{
+    width: 350px;
+  }
+
+  .detail > img{
+    width: 350px;
+    height: 300px;
   }
 }
