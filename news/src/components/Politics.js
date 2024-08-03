@@ -13,7 +13,7 @@ const Politics = () => {
     const API_KEY = 'pub_49696d65dffed478384f5acc3d77d8b16c9b5';
     const CATEGORY = 'politics';
     
-    const NEWS_LIMIT = 4;
+    const NEWS_LIMIT = 10;
 
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
