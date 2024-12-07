@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from './Images/DAILY_NEWS_LOGO.png'
 
 const Navbar = () => {
-    
+
     useEffect(() => {
         applyTheme();
     }, []);
@@ -21,7 +21,6 @@ const Navbar = () => {
             links.forEach(link => {
                 link.style.color = 'white';
             });
-            localStorage.setItem('Theme', 'Dark');
         }
         
         const lightTheme = () => {
@@ -31,7 +30,6 @@ const Navbar = () => {
             links.forEach(link => {
                 link.style.color = 'black';
             });
-            localStorage.setItem('Theme', 'Light');
         }
 
         let savedTheme = localStorage.getItem('Theme');
@@ -40,6 +38,18 @@ const Navbar = () => {
         }
         else{
             darkTheme();
+        }
+    }
+
+    const toggleTheme = () => {
+        let currentTheme = localStorage.getItem('Theme');
+        if(currentTheme === 'Dark'){
+            localStorage.setItem('Theme', 'Light');
+            applyTheme();
+        }
+        else{
+            localStorage.setItem('Theme', 'Dark');
+            applyTheme();
         }
     }
 
@@ -55,7 +65,9 @@ const Navbar = () => {
                     <p style={{cursor: 'pointer'}} onClick={() => {Navigate('/politics');}}> Politics </p>
                     <p style={{cursor: 'pointer'}} onClick={() => {Navigate('/sports');}}> Sports </p>
                     <p style={{cursor: 'pointer'}} onClick={() => {Navigate('/technology');}}> Tech </p>
-                    <p onClick={applyTheme} style={{cursor: 'pointer'}}> ☀️ </p>
+                    <p onClick={toggleTheme} style={{cursor: 'pointer'}}> 
+                        {localStorage.getItem('Theme') === "Light" ? "☀️" : "🌙"}
+                    </p>
                 </div>
             </nav>
         </>
