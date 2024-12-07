@@ -9,7 +9,7 @@ const Footer = () => {
         <>
         <footer style={{backgroundColor: 'white', color: 'black', marginTop: '80px', padding: '20px 0px', textAlign: 'center', boxShadow: '1px 1px 20px'}}>
             <div className="left">
-                <img src={logo} style={{width: '200px'}}></img>
+                <img src={logo} style={{width: '100px'}}></img>
             </div>
             <div className="right">
                 <p> This website is for demonstration of my skills purpose only. No copyright intended </p>
