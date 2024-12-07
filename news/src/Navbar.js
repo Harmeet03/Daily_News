@@ -12,7 +12,6 @@ const Navbar = () => {
     const applyTheme = () => {
         let body = document.querySelector('body');
         let nav = document.querySelector('nav');
-        let footer = document.querySelector('footer');
         let links = document.querySelectorAll('.down p');
         
         const darkTheme = () => {
