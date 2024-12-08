@@ -14,7 +14,7 @@ const NotFound = () => {
     return(
         <>
         <div className='error'>
-            <p onClick={() => Link('/')}> Back </p>
+            <p onClick={() => Link('/')} style={{cursor: 'pointer'}}> Back </p>
             <div>
                 <h1> 404😔 </h1>
                 <p> The news you want does not exists </p>
