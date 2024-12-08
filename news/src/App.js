@@ -9,6 +9,8 @@ import Politics from './components/Politics.js'
 import Technology from './components/Technology.js'
 import NewsDetail from './components/NewsDetail.js'
 
+import NotFound from './404'
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function App() {
         <Route path="/sports" element={<Sports/>} />
         <Route path="/politics" element={<Politics/>} />
         <Route path="/technology" element={<Technology/>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   )

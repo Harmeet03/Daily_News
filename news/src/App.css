@@ -19,6 +19,24 @@
   }
 }
 
+/* ERROR PAGE CSS */
+.error{
+  padding: 20px 40px;
+}
+
+.error > div{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+}
+
+.error > div > h1{
+  font-size: 40px;
+}
+
 /* NAVBAR CSS */
 nav{
   background-color: white;
@@ -97,6 +115,7 @@ header{
 
 .content > .box > .link > h3{
   padding: 10px 16px;
+  color: red;
 }
 
 .content > .box > .link > p{
