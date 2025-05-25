@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import '../App.css'
 import { useParams } from "react-router-dom";
-import Navbar from '../Navbar';
+import Navbar from '../Navbar.jsx';
 import { Helmet } from 'react-helmet';
-import Loader from '../Loading';
+import Loader from '../Loading.jsx';
 
 const NewsDetail = () => {
     const { id } = useParams();
     
-    // const API_KEY = 'pub_4946341641b9764eb0741bbd661bd4b7c9e43';
-    const API_KEY = 'pub_49696d65dffed478384f5acc3d77d8b16c9b5';
+    const API_KEY = 'pub_4946341641b9764eb0741bbd661bd4b7c9e43';
+    // const API_KEY = 'pub_49696d65dffed478384f5acc3d77d8b16c9b5';
     const categories = ['', 'business', 'politics', 'sports', 'technology'];
     
     const [newsDetail, setNewsDetail] = useState(null);
@@ -56,8 +56,10 @@ const NewsDetail = () => {
     if(loading){
         return(
             <>
-                <Navbar/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                <Loader/>
+                <div className="min-h-screen dark:bg-gray-700 dark:text-white">
+                    <Navbar/>
+                    <Loader/>
+                </div>
             </>
         );
     }
@@ -65,8 +67,10 @@ const NewsDetail = () => {
     if(error){
         return(
             <>
-                <Navbar/>
-                <p style={{marginTop: '350px', textAlign: 'center', padding: '0px 40px'}}> The server responded with a status of <b style={{color: 'red'}}>429 (TOO MANY REQUESTS).</b> <br/>Sorry for the inconvenience :( <br/>Kindly try again later.</p>
+                <div className="min-h-screen dark:bg-gray-700 dark:text-white transition-all">
+                    <Navbar/>
+                    <p className="text-center py-16 px-8"> The server responded with a status of <b className="text-blue-500">429 (TOO MANY REQUESTS).</b> <br/>Sorry for the inconvenience :( <br/>Kindly try again later.</p>
+                </div>
             </>
         );
     }
@@ -74,11 +78,10 @@ const NewsDetail = () => {
     if(connection){
         return(
             <>
-                <Navbar/>
-                <header>
-                    <h2> LATEST NEWS </h2>
-                </header>
-                <p style={{marginTop: '100px', textAlign: 'center'}}> Connection Problem. <br/>Kindly check the Internet and try again. </p>
+                <div className="min-h-screen dark:bg-gray-700 dark:text-white transition-all">
+                    <Navbar/>
+                    <p className="text-center mt-40"> <b className="text-blue-500 text-4xl">No Internet.</b> <br/>Kindly check the Internet and try again. </p>
+                </div>
             </>
         );
     }
@@ -100,17 +103,18 @@ const NewsDetail = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </Helmet>
 
-            <Navbar/>
-            
-            <div className="detail">
-                <h2> {newsDetail.title} </h2>
-                <img src={newsDetail.image_url}/>
-                <div>
-                    <p className="from">Posted By:<br/> <b>{newsDetail.creator == null ? <span>No Data</span> : (newsDetail.creator)}</b></p>
-                    <p className="time">Published at:<br/> <b>{newsDetail.pubDate}</b></p>
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-700 dark:text-white transition-all">
+                <Navbar/>
+                <img src={newsDetail.image_url} className="w-full sm:w-200 sm:m-auto lg:rounded-t-xl bg-white mt-5 sm:mt-5"/>
+                <div className="px-4 pb-8 sm:w-150 sm:m-auto lg:w-200 bg-white dark:bg-gray-900 transition-all">
+                    <h2 className="text-4xl py-8 font-bold"> {newsDetail.title} </h2>
+                    <div className="flex flex-row justify-between">
+                        <p> <span> By </span> <b className="text-blue-500">{newsDetail.creator == null ? <span>Unknown</span> : (newsDetail.creator)}</b></p>
+                        <p> - <b className="text-blue-500">{newsDetail.pubDate}</b></p>
+                    </div>
+                    <p className="py-8 text-2xl"> {newsDetail.description == null ? <span>No description available.</span> : (newsDetail.description)} </p>
+                    <p className=""> Source: <b><a href={newsDetail.link} target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer hover:text-xl transition-all"> {new URL(newsDetail.link).hostname} </a></b></p>
                 </div>
-                <p className="desc"> {newsDetail.description == null ? <span>No Description Available in the server :(</span> : (newsDetail.description)} </p>
-                <p className="source"> Source: <b><a href={newsDetail.link} target="_blank" rel="noreferrer"> {newsDetail.link} </a></b></p>
             </div>
         </>
     );

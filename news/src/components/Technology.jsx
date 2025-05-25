@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import '../App.css'
 import { Link } from "react-router-dom";
-import Navbar from '../Navbar';
+import Navbar from '../Navbar.jsx';
 import Footer from '../Footer';
 import { Helmet } from 'react-helmet';
-import Loader from '../Loading';
+import Loader from '../Loading.jsx';
 
 
-const Sports = () => {
+const Technology = () => {
     
     // const API_KEY = 'pub_4946341641b9764eb0741bbd661bd4b7c9e43';
     const API_KEY = 'pub_49696d65dffed478384f5acc3d77d8b16c9b5';
-    const CATEGORY = 'sports';
+    const CATEGORY = 'technology';
     
     const NEWS_LIMIT = 10;
 
@@ -52,12 +52,12 @@ const Sports = () => {
 
     if(loading){
         return(
-            <>
-                <Navbar/>
-                <header>
-                    <h2> SPORTS NEWS </h2>
-                </header>
-                <Loader/>
+             <>  
+                <div className="min-h-screen dark:bg-gray-700 dark:text-white">
+                    <Navbar/>
+                    <h2 className="text-3xl text-center sm:text-4xl sm:px-16 text-blue-500 mt-8"> TECHNOLOGY NEWS </h2>
+                    <Loader/>
+                </div>
             </>
         );
     }
@@ -65,11 +65,11 @@ const Sports = () => {
     if(error){
         return(
             <>
-                <Navbar/>
-                <header>
-                    <h2> SPORTS NEWS </h2>
-                </header>
-                <p style={{marginTop: '100px', textAlign: 'center', padding: '0px 40px'}}> The server responded with a status of <b style={{color: 'red'}}>429 (TOO MANY REQUESTS).</b> <br/>Sorry for the inconvenience :( <br/>Kindly try again later.</p>
+                <div className="min-h-screen dark:bg-gray-700 dark:text-white transition-all">
+                    <Navbar/>
+                    <h2 className="text-3xl text-center sm:text-4xl sm:px-16 text-blue-500 mt-8"> TECHNOLOGY NEWS </h2>
+                    <p className="text-center py-16 px-8"> The server responded with a status of <b className="text-blue-500">429 (TOO MANY REQUESTS).</b> <br/>Sorry for the inconvenience :( <br/>Kindly try again later.</p>
+                </div>
             </>
         );
     }
@@ -77,11 +77,10 @@ const Sports = () => {
     if(connection){
         return(
             <>
-                <Navbar/>
-                <header>
-                    <h2> SPORTS NEWS </h2>
-                </header>
-                <p style={{marginTop: '100px', textAlign: 'center'}}> <b style={{color: 'red'}}>Connection Problem.</b> <br/>Kindly check the Internet and try again. </p>
+                <div className="min-h-screen dark:bg-gray-700 dark:text-white transition-all">
+                    <Navbar/>
+                    <p className="text-center mt-40"> <b className="text-blue-500 text-4xl">No Internet.</b> <br/>Kindly check the Internet and try again. </p>
+                </div>
             </>
         );
     }
@@ -103,29 +102,30 @@ const Sports = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </Helmet>
 
-            <Navbar/>
-            
-            <header>
-                <h2> SPORTS NEWS </h2>
-            </header>
-            <div className="content">
-                {
-                    news.slice(0, NEWS_LIMIT).map((content) => (
-                        <div className="box" key={content.article_id}>
-                            <Link className="link" to={`/news/${content.article_id}`}>
-                                <img src={content.image_url}></img>
-                                <h3 className="heading">{content.title}</h3>
-                                <p className="from">Posted By:<br/> <b>{content.creator == null ? <span>No Data</span> : (content.creator)}</b></p>
-                                <p className="time">Published at:<br/> <b>{content.pubDate}</b></p>
-                            </Link>
-                        </div>
-                    ))
-                }
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-700 dark:text-white transition-all">
+                <Navbar/>
+                <h2 className="text-3xl text-center sm:text-4xl text-blue-500 mt-8"> TECHNOLOGY NEWS </h2>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 lg:w-250 lg:m-auto p-4 sm:p-16 gap-8">
+                    {
+                        news.slice(0, NEWS_LIMIT).map((content) => (
+                            <div className="bg-white cursor-pointer hover:scale-110 transition-all rounded-t-xl dark:bg-gray-900" key={content.article_id}>
+                                <Link to={`/news/${content.article_id}`}>
+                                    <img src={content.image_url} className="w-full h-50 rounded-t-xl" alt="Image Not Found"/>
+                                    <div className="p-8">
+                                        <p className="capitalize text-xl text-blue-500 pb-2"> {content.category} </p>
+                                        <h3 className="text-lg">{content.title}</h3>
+                                        <p className="text-blue-500 text-sm text-left pt-4">Published at:<br/> <b>{content.pubDate}</b></p>
+                                    </div>
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
+                <Footer/>
             </div>
-            <Footer/>
         </>
     );
 
 }
 
-export default Sports;
+export default Technology;
