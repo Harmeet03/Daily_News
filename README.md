@@ -1,4 +1,3 @@
-Launch your own news website in minutes with this fully functional React template!
 Built using React and powered by NewsData.io API, this modern, responsive news website is perfect for developers, bloggers, or anyone looking to create a sleek, content-driven site.
 
 Features:
