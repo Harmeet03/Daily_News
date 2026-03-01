@@ -13,19 +13,6 @@ Perfect for:
 - Freelancers: Use it as a ready-to-go solution for your clients in need of a news portal.
 - Bloggers/Content Creators: Quickly launch a news site and focus on creating great content without worrying about backend setups.
 
-How to use:
-- Download the ZIP file.
-- Unzip and open the index.js file.
-- Insert your NewsData.io API key into the configuration.
-
-Enjoy your custom news site, ready to go live!
-
-🔧 Setup:
-- Clone project
-- Run npm install
-- Add your API key in .env
--Run npm start
-
 📄 License:
 ✔️ Personal + Commercial use
 ❌ Resale or redistribution of code as-is not allowed
